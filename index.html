@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Média</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="paginas.css" />
+  </head>
+  <body>
+    <!-- FUNDO DECORATIVO (só CSS, sem JavaScript) -->
+    <div class="fundo" aria-hidden="true">
+      <span class="forma circulo circulo-1"></span>
+      <span class="forma circulo circulo-2"></span>
+      <span class="forma quadrado quadrado-1"></span>
+      <span class="forma quadrado quadrado-2"></span>
+      <span class="forma particula particula-1"></span>
+      <span class="forma particula particula-2"></span>
+      <span class="forma particula particula-3"></span>
+      <span class="forma particula particula-4"></span>
+    </div>
+
+    <nav class="menu">
+      <a href="index.html" class="menu-logo">Média+</a>
+      <div class="menu-links">
+        <a href="index.html" class="ativo">Calculadora</a>
+        <a href="notas.html">Notas</a>
+        <a href="grafico.html">Gráfico</a>
+        <a href="login.html" id="btnSair">Sair</a>
+      </div>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+      <section class="card">
+        <header class="cabecalho">
+          <span class="selo">Tecnologia + Educação</span>
+          <h1 class="titulo">Calculadora de Média</h1>
+          <p class="subtitulo">Descubra sua média de forma rápida e simples.</p>
+        </header>
+
+        <div class="formulario">
+          <div class="campo">
+            <label for="nota1">Nota 1</label>
+            <input
+              type="number"
+              id="nota1"
+              class="input-nota"
+              placeholder="0 a 10"
+              min="0"
+              max="10"
+              step="0.1"
+            />
+          </div>
+
+          <div class="campo">
+            <label for="nota2">Nota 2</label>
+            <input
+              type="number"
+              id="nota2"
+              class="input-nota"
+              placeholder="0 a 10"
+              min="0"
+              max="10"
+              step="0.1"
+            />
+          </div>
+
+          <div class="campo">
+            <label for="nota3">Nota 3</label>
+            <input
+              type="number"
+              id="nota3"
+              class="input-nota"
+              placeholder="0 a 10"
+              min="0"
+              max="10"
+              step="0.1"
+            />
+          </div>
+
+          <button type="button" id="btnCalcular" class="botao">
+            Calcular média
+          </button>
+        </div>
+
+        <!-- RESULTADO -->
+        <div id="resultado" class="resultado">
+          <span class="resultado-label">Sua média</span>
+          <strong id="media" class="resultado-numero">--</strong>
+          <span id="situacao" class="resultado-situacao"
+            >Aguardando cálculo...</span
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- Seu JavaScript entra aqui depois: -->
+    <!-- <script src="js/script.js"></script> -->
+  </body>
+</html>

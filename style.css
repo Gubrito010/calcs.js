@@ -1,0 +1,330 @@
+/* =====================================================
+   CALCULADORA DE MÉDIA - style.css
+   Organização:
+   1. Variáveis (cores)   2. Reset e corpo
+   3. Fundo animado       4. Card
+   5. Inputs              6. Botão
+   7. Resultado           8. Responsividade
+   ===================================================== */
+
+/* 1. VARIÁVEIS: mude as cores aqui e o site inteiro muda */
+:root {
+    --fundo-1: #0f1b4d;
+    --fundo-2: #3b1d8f;
+    --fundo-3: #0e7490;
+    --destaque: #22d3ee;
+    --destaque-2: #a78bfa;
+    --texto: #f1f5f9;
+    --texto-suave: #b6c2dc;
+}
+
+/* 2. RESET E CORPO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    color: var(--texto);
+    background: linear-gradient(135deg, var(--fundo-1), var(--fundo-2), var(--fundo-3));
+    background-size: 300% 300%;
+    animation: gradienteMovendo 18s ease infinite;
+    overflow-x: hidden;
+}
+
+/* 3. FUNDO ANIMADO */
+.fundo {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.forma {
+    position: absolute;
+    display: block;
+}
+
+.circulo {
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(34, 211, 238, 0.35), rgba(167, 139, 250, 0.08));
+}
+.circulo-1 { width: 280px; height: 280px; top: -80px; left: -80px; animation: flutuar 12s ease-in-out infinite; }
+.circulo-2 { width: 200px; height: 200px; bottom: -50px; right: 8%; animation: flutuar 15s ease-in-out infinite reverse; }
+
+.quadrado {
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+}
+.quadrado-1 { width: 90px; height: 90px; top: 18%; right: 10%; animation: girar 25s linear infinite; }
+.quadrado-2 { width: 60px; height: 60px; bottom: 22%; left: 8%; animation: girar 20s linear infinite reverse; }
+
+.particula {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--destaque);
+    box-shadow: 0 0 12px var(--destaque);
+    opacity: 0.6;
+}
+.particula-1 { top: 30%; left: 15%; animation: flutuar 7s ease-in-out infinite; }
+.particula-2 { top: 65%; left: 82%; animation: flutuar 9s ease-in-out infinite 1s; }
+.particula-3 { top: 12%; left: 55%; animation: flutuar 8s ease-in-out infinite 2s; }
+.particula-4 { top: 80%; left: 40%; animation: flutuar 10s ease-in-out infinite 0.5s; }
+
+/* 4. CARD (glassmorphism discreto) */
+.container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+}
+
+.card {
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 32px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    animation: aparecer 0.9s ease-out both;
+}
+
+.cabecalho {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.selo {
+    display: inline-block;
+    padding: 6px 14px;
+    margin-bottom: 14px;
+    font-size: 0.8rem;
+    color: var(--destaque);
+    border: 1px solid rgba(34, 211, 238, 0.4);
+    border-radius: 999px;
+    background: rgba(34, 211, 238, 0.08);
+}
+
+.titulo {
+    font-size: 2rem;
+    line-height: 1.15;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    color: var(--texto-suave);
+    line-height: 1.5;
+}
+
+/* 5. INPUTS */
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+}
+
+.input-nota {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    color: var(--texto);
+    background: rgba(255, 255, 255, 0.07);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s, transform 0.3s;
+}
+
+.input-nota::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.input-nota:hover {
+    border-color: rgba(34, 211, 238, 0.6);
+}
+
+/* Quando o usuário clica no input */
+.input-nota:focus {
+    border-color: var(--destaque);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.18), 0 0 20px rgba(34, 211, 238, 0.3);
+    transform: translateY(-2px);
+    animation: brilhoInput 1.8s ease-in-out infinite;
+}
+
+/* 6. BOTÃO */
+.botao {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 10px;
+    padding: 16px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #071232;
+    cursor: pointer;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(90deg, var(--destaque), var(--destaque-2));
+    box-shadow: 0 10px 25px rgba(34, 211, 238, 0.35);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Faixa de brilho que passa pelo botão */
+.botao::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transform: skewX(-20deg);
+}
+
+.botao:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 35px rgba(167, 139, 250, 0.5);
+}
+
+.botao:hover::after {
+    animation: brilhoBotao 0.9s ease;
+}
+
+/* Feedback ao clicar */
+.botao:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: 0 5px 12px rgba(34, 211, 238, 0.3);
+}
+
+/* 7. RESULTADO */
+.resultado {
+    margin-top: 28px;
+    padding: 22px;
+    text-align: center;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+}
+
+.resultado-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+}
+
+.resultado-numero {
+    display: block;
+    margin: 6px 0;
+    font-size: 3.4rem;
+    color: var(--destaque);
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+}
+
+.resultado-situacao {
+    display: block;
+    font-size: 1rem;
+    color: var(--texto-suave);
+}
+
+/* CLASSES PARA VOCÊ USAR NO JS (classList.add):
+   .mostrar  -> anima o resultado quando a média aparecer
+   .aprovado / .recuperacao / .reprovado -> mudam a cor do número */
+.resultado.mostrar .resultado-numero {
+    animation: pulsar 0.6s ease;
+}
+.resultado.aprovado .resultado-numero { color: #4ade80; text-shadow: 0 0 20px rgba(74, 222, 128, 0.5); }
+.resultado.recuperacao .resultado-numero { color: #fbbf24; text-shadow: 0 0 20px rgba(251, 191, 36, 0.5); }
+.resultado.reprovado .resultado-numero { color: #f87171; text-shadow: 0 0 20px rgba(248, 113, 113, 0.5); }
+
+/* ANIMAÇÕES (@keyframes) */
+
+/* Card entrando na tela */
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Fundo com gradiente deslizando */
+@keyframes gradienteMovendo {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Formas subindo e descendo devagar */
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50%      { transform: translateY(-30px) translateX(15px); }
+}
+
+/* Quadrados girando */
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* Input focado "respirando" */
+@keyframes brilhoInput {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.18), 0 0 14px rgba(34, 211, 238, 0.25); }
+    50%      { box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.3), 0 0 26px rgba(34, 211, 238, 0.5); }
+}
+
+/* Brilho atravessando o botão */
+@keyframes brilhoBotao {
+    from { left: -80%; }
+    to   { left: 130%; }
+}
+
+/* Número do resultado "estourando" */
+@keyframes pulsar {
+    0%   { transform: scale(0.6); opacity: 0; }
+    60%  { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* 8. RESPONSIVIDADE */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .card { max-width: 480px; }
+}
+
+/* Celular */
+@media (max-width: 480px) {
+    .container { padding: 16px 12px; }
+    .card { padding: 28px 20px; border-radius: 22px; }
+    .titulo { font-size: 1.6rem; }
+    .input-nota { padding: 15px; font-size: 16px; } /* 16px evita zoom no iPhone */
+    .botao { padding: 18px; }
+    .resultado-numero { font-size: 2.8rem; }
+    .circulo-1 { width: 180px; height: 180px; }
+    .quadrado-1 { display: none; }
+}
+
+/* Telas grandes */
+@media (min-width: 1200px) {
+    .card { max-width: 480px; padding: 48px 40px; }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}

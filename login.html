@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Média+</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="paginas.css" />
+  </head>
+  <body>
+    <div class="fundo" aria-hidden="true">
+      <span class="forma circulo circulo-1"></span>
+      <span class="forma circulo circulo-2"></span>
+      <span class="forma quadrado quadrado-1"></span>
+      <span class="forma quadrado quadrado-2"></span>
+      <span class="forma particula particula-1"></span>
+      <span class="forma particula particula-2"></span>
+      <span class="forma particula particula-3"></span>
+    </div>
+
+    <main class="container">
+      <section class="card card-login">
+        <header class="cabecalho">
+          <span class="selo">Média+</span>
+          <h1 class="titulo">Entrar</h1>
+          <p class="subtitulo">Acesse sua conta para ver suas notas.</p>
+        </header>
+
+        <div class="formulario">
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              class="input-nota"
+              placeholder="seuemail@exemplo.com"
+            />
+          </div>
+
+          <div class="campo">
+            <label for="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              class="input-nota"
+              placeholder="Sua senha"
+            />
+          </div>
+
+          <p id="mensagemErro" class="mensagem-erro">
+            E-mail ou senha incorretos.
+          </p>
+          <a href="index.html">
+            <button type="button" class="botao">Entrar</button>
+          </a>
+        </div>
+
+        <p class="link-rodape">
+          Ainda não tem conta? <a href="#" id="linkCadastro">Criar conta</a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

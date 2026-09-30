@@ -1,0 +1,299 @@
+/* =====================================================
+   paginas.css - estilos das páginas novas
+   (menu, login, notas e gráfico)
+   Carregue DEPOIS do style.css. Usa as mesmas variáveis.
+   ===================================================== */
+
+/* MENU FIXO NO TOPO */
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: rgba(15, 27, 77, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    animation: descer 0.6s ease-out both;
+}
+
+.menu-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--destaque);
+    text-decoration: none;
+}
+
+.menu-links {
+    display: flex;
+    gap: 6px;
+}
+
+.menu-links a {
+    padding: 8px 14px;
+    color: var(--texto-suave);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.menu-links a:hover,
+.menu-links a.ativo {
+    color: var(--texto);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Espaço para o menu fixo não cobrir o card */
+.container {
+    padding-top: 90px;
+}
+
+/* Cards maiores (notas e gráfico) */
+.card-largo {
+    max-width: 760px;
+}
+
+/* ---------- LOGIN ---------- */
+.card-login {
+    max-width: 400px;
+}
+
+.mensagem-erro {
+    display: none;
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    color: #fecaca;
+    background: rgba(248, 113, 113, 0.15);
+    border: 1px solid rgba(248, 113, 113, 0.5);
+    border-radius: 10px;
+}
+
+/* Seu JS adiciona a classe "mostrar" para exibir o erro */
+.mensagem-erro.mostrar {
+    display: block;
+    animation: tremer 0.4s ease;
+}
+
+.link-rodape {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+}
+
+.link-rodape a {
+    color: var(--destaque);
+    text-decoration: none;
+}
+
+.link-rodape a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- NOTAS ---------- */
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.resumo-item {
+    padding: 16px 10px;
+    text-align: center;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.resumo-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+}
+
+.resumo-item strong {
+    font-size: 1.6rem;
+    color: var(--destaque);
+}
+
+/* A tabela rola de lado se a tela for pequena */
+.tabela-wrapper {
+    overflow-x: auto;
+    margin-bottom: 28px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.tabela {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela th,
+.tabela td {
+    padding: 14px 16px;
+}
+
+.tabela th {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.tabela tbody tr {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s;
+}
+
+.tabela tbody tr:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* Etiqueta de situação */
+.tag {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 999px;
+}
+
+.tag.aprovado    { color: #4ade80; background: rgba(74, 222, 128, 0.15); }
+.tag.recuperacao { color: #fbbf24; background: rgba(251, 191, 36, 0.15); }
+.tag.reprovado   { color: #f87171; background: rgba(248, 113, 113, 0.15); }
+
+.subtitulo-secao {
+    margin-bottom: 14px;
+    font-size: 1.1rem;
+}
+
+.form-linha {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+/* ---------- GRÁFICO ---------- */
+.grafico {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    padding: 20px 10px 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.coluna {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+}
+
+.coluna-valor {
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+/* Área de altura fixa: a barra ocupa uma porcentagem dela */
+.barra-area {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 90px;
+    height: 240px;
+}
+
+.barra {
+    width: 100%;
+    /* --valor vai de 0 a 10. Ex: 8.5 -> 85% da altura */
+    height: calc(var(--valor) * 10%);
+    border-radius: 12px 12px 0 0;
+    background: linear-gradient(180deg, var(--destaque), var(--destaque-2));
+    transform-origin: bottom;
+    animation: crescer 1s ease-out both;
+    transition: height 0.6s ease, filter 0.3s;
+}
+
+.barra:hover {
+    filter: brightness(1.25);
+}
+
+.barra.aprovado    { background: linear-gradient(180deg, #4ade80, #16a34a); }
+.barra.recuperacao { background: linear-gradient(180deg, #fbbf24, #d97706); }
+.barra.reprovado   { background: linear-gradient(180deg, #f87171, #dc2626); }
+
+.coluna-nome {
+    margin: 10px 0 -34px;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.legenda {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 54px;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+.bolinha {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    border-radius: 50%;
+}
+
+.bolinha.aprovado    { background: #4ade80; }
+.bolinha.recuperacao { background: #fbbf24; }
+.bolinha.reprovado   { background: #f87171; }
+
+/* ---------- ANIMAÇÕES NOVAS ---------- */
+
+/* Menu descendo do topo */
+@keyframes descer {
+    from { opacity: 0; transform: translateY(-100%); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mensagem de erro balançando */
+@keyframes tremer {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-8px); }
+    75%      { transform: translateX(8px); }
+}
+
+/* Barras crescendo de baixo para cima */
+@keyframes crescer {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+}
+
+/* ---------- RESPONSIVIDADE ---------- */
+@media (max-width: 600px) {
+    .menu { padding: 10px 12px; }
+    .menu-logo { display: none; }
+    .menu-links { width: 100%; justify-content: space-between; }
+    .menu-links a { padding: 8px 10px; font-size: 0.9rem; }
+    .container { padding-top: 80px; }
+    .form-linha { grid-template-columns: 1fr 1fr; }
+    .form-linha #novaMateria { grid-column: 1 / -1; }
+    .grafico { gap: 8px; padding: 20px 0 0; }
+    .barra-area { height: 180px; }
+    .resumo-item strong { font-size: 1.3rem; }
+}

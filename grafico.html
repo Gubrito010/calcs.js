@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gráfico - Média+</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="paginas.css" />
+  </head>
+  <body>
+    <div class="fundo" aria-hidden="true">
+      <span class="forma circulo circulo-1"></span>
+      <span class="forma circulo circulo-2"></span>
+      <span class="forma quadrado quadrado-1"></span>
+      <span class="forma quadrado quadrado-2"></span>
+      <span class="forma particula particula-1"></span>
+      <span class="forma particula particula-2"></span>
+      <span class="forma particula particula-3"></span>
+    </div>
+    <nav class="menu">
+      <a href="index.html" class="menu-logo">Média+</a>
+      <div class="menu-links">
+        <a href="index.html">Calculadora</a>
+        <a href="notas.html">Notas</a>
+        <a href="grafico.html" class="ativo">Gráfico</a>
+        <a href="login.html" id="btnSair">Sair</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="card card-largo">
+        <header class="cabecalho">
+          <h1 class="titulo">Gráfico de desempenho</h1>
+          <p class="subtitulo">Veja a média de cada matéria lado a lado.</p>
+        </header>
+
+        <!-- A altura de cada barra vem da variável --valor (de 0 a 10).
+                 No JS: barra.style.setProperty("--valor", 7.5) -->
+        <div id="grafico" class="grafico">
+          <div class="coluna">
+            <span class="coluna-valor">8.5</span>
+            <div class="barra-area">
+              <div class="barra aprovado" style="--valor: 8.5"></div>
+            </div>
+            <span class="coluna-nome">Matemática</span>
+          </div>
+
+          <div class="coluna">
+            <span class="coluna-valor">6.0</span>
+            <div class="barra-area">
+              <div class="barra recuperacao" style="--valor: 6"></div>
+            </div>
+            <span class="coluna-nome">Português</span>
+          </div>
+
+          <div class="coluna">
+            <span class="coluna-valor">4.2</span>
+            <div class="barra-area">
+              <div class="barra reprovado" style="--valor: 4.2"></div>
+            </div>
+            <span class="coluna-nome">Programação</span>
+          </div>
+        </div>
+
+        <div class="legenda">
+          <span><i class="bolinha aprovado"></i> Aprovado</span>
+          <span><i class="bolinha recuperacao"></i> Recuperação</span>
+          <span><i class="bolinha reprovado"></i> Reprovado</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
